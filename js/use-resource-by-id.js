@@ -21,7 +21,7 @@
 		const type = typeById[ id ];
 
 		useEffect( function() {
-			if ( typeById[ id ] ) {
+			if ( ! id || typeById[ id ] ) {
 				return;
 			}
 
@@ -35,7 +35,7 @@
 		}, [ id ] );
 
 		return useSelect( function( select ) {
-			if ( ! type ) {
+			if ( ! id || ! type ) {
 				return undefined;
 			}
 			return select( 'core' ).getEntityRecord( 'postType', type, id );
