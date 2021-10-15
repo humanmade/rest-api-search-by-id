@@ -4,7 +4,7 @@
   "private": true,
   "description": "WordPress plugin to support the include & exclude parameters on the REST API /search endpoint.",
   "scripts": {
-    "build": "terser src/use-resource-by-id.js --compress --mangle -o build/use-resource-by-id.js"
+    "build": "terser js/use-resource-by-id.js --compress --mangle -o js/use-resource-by-id.min.js"
   },
   "keywords": [
     "WordPress",

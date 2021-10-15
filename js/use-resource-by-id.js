@@ -2,7 +2,7 @@
 /* global React:false */
 ( function() {
 	var apiFetch = wp.apiFetch;
-	var useSelect = wp.data;
+	var useSelect = wp.data.useSelect;
 	var useEffect = React.useEffect;
 
 	/**
@@ -15,14 +15,10 @@
 	 * Query for a post entity resource without knowing its post type.
 	 *
 	 * @param {number} id Numeric ID of a post resource of unknown subtype.
+	 * @returns {object|undefined} The requested post object, if found and loaded.
 	 */
 	function useResourceById( id ) {
-		var resource = useSelect( function( select ) {
-			if ( ! typeById[ id ] ) {
-				return undefined;
-			}
-			return select( 'core' ).getEntityRecord( 'postType', typeById[ id ], id );
-		}, [ id ] );
+		const type = typeById[ id ];
 
 		useEffect( function() {
 			if ( typeById[ id ] ) {
@@ -33,12 +29,17 @@
 				path: '/wp/v2/search?type=post&include=' + id + '&_fields=id,subtype',
 			} ).then( ( result ) => {
 				if ( result.length ) {
-					typeById[ id ] = subtype;
+					typeById[ id ] = result[0].subtype;
 				}
 			} );
 		}, [ id ] );
 
-		return resource;
+		return useSelect( function( select ) {
+			if ( ! type ) {
+				return undefined;
+			}
+			return select( 'core' ).getEntityRecord( 'postType', type, id );
+		}, [ id, type ] );
 	}
 
 	window.useResourceById = useResourceById;
