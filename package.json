@@ -1,0 +1,18 @@
+{
+  "name": "rest-api-search-by-id",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WordPress plugin to support the include & exclude parameters on the REST API /search endpoint.",
+  "scripts": {
+    "build": "terser src/use-resource-by-id.js --compress --mangle -o build/use-resource-by-id.js"
+  },
+  "keywords": [
+    "WordPress",
+    "Plugin"
+  ],
+  "author": "Human Made",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "terser": "^5.9.0"
+  }
+}
