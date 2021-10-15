@@ -3,7 +3,7 @@
 Plugin Name: REST API Search by ID
 Plugin URI: https://github.com/humanmade/rest-api-search-by-id
 Description: Support the "include" and "exclude" parameters on the /search REST API endpoint.
-Version: 1.0.0
+Version: 1.0.1
 Author: Human Made
 Author URI: https://humanmade.com/
 License: GPL2
@@ -55,7 +55,7 @@ function enqueue_hook_js() : void {
 			'wp-data',
 			'react',
 		],
-		'1.0.0'
+		'1.0.1'
 	);
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_hook_js' );

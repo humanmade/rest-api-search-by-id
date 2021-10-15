@@ -1,6 +1,6 @@
 {
   "name": "rest-api-search-by-id",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "WordPress plugin to support the include & exclude parameters on the REST API /search endpoint.",
   "scripts": {
